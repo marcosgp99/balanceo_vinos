@@ -195,3 +195,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;f
 .col-map-row label{font-size:13px;font-weight:500;min-width:195px;flex-shrink:0}
 .col-map-row select{flex:1;padding:7px 9px;border:.5px solid #d0d0c8;border-radius:6px;font-size:13px;background:#fff}
 .modal-actions{display:flex;gap:8px;margin-top:18px}
+/* EXPORT BUTTON */
+.btn-export{padding:7px 12px;font-size:12px;font-weight:500;border-radius:7px;cursor:pointer;border:.5px solid #D85A30;color:#993C1D;background:#FAECE7;transition:background .15s}
+.btn-export:hover{background:#F5C4B0}
+
+/* N+3 SUB-ROW SEMAPHORE COLORS */
+.sub-ok  td{background:#f0faf5 !important}
+.sub-nok td{background:#fef2f2 !important}
+.sub-ok:hover  td{background:#e4f6ee !important}
+.sub-nok:hover td{background:#fde8e8 !important}
+.arrival-date{font-size:10px;color:#888;margin-left:8px;font-style:italic}
+.arrival-date.nok{color:#A32D2D}
