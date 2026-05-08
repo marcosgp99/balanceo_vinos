@@ -13,53 +13,59 @@
   <header class="header">
     <div class="header-left">
       <h1>Balanceo de Cargas WO</h1>
-      <span class="subtitle">Plan semanal &middot; N → N+3</span>
+      <span class="subtitle">Plan semanal &middot; N &rarr; N+3</span>
     </div>
     <div class="header-right">
       <button class="btn-demo" onclick="cargarDemoData()">Cargar ejemplo</button>
-      <label class="btn-import" for="fileInput">Importar Excel</label>
-      <input type="file" id="fileInput" accept=".xlsx,.xls" hidden>
+      <label class="btn-import btn-plan" for="filePlan">&#128203; Importar Plan</label>
+      <input type="file" id="filePlan" accept=".xlsx,.xls" hidden>
+      <label class="btn-import btn-entrega" for="fileEntrega">&#128230; Importar Entregas</label>
+      <input type="file" id="fileEntrega" accept=".xlsx,.xls" hidden>
     </div>
   </header>
 
+  <div class="status-bar">
+    <div class="status-item" id="status-plan">
+      <span class="status-dot dot-off"></span><span>Plan: sin cargar</span>
+    </div>
+    <div class="status-item" id="status-entrega">
+      <span class="status-dot dot-off"></span><span>Entregas: sin cargar</span>
+    </div>
+    <div class="status-item" id="status-semanas" style="margin-left:auto"></div>
+  </div>
+
   <div class="metrics">
-    <div class="metric-card"><div class="metric-label">WOs activas</div><div class="metric-value" id="m-wos">—</div></div>
+    <div class="metric-card"><div class="metric-label">Codigos unicos</div><div class="metric-value" id="m-cods">—</div></div>
     <div class="metric-card"><div class="metric-label">Ocupacion promedio</div><div class="metric-value" id="m-occ">—</div></div>
     <div class="metric-card"><div class="metric-label">Alertas</div><div class="metric-value" id="m-alerts">—</div></div>
-    <div class="metric-card"><div class="metric-label">Disponibles N+3</div><div class="metric-value n3" id="m-n3">—</div></div>
+    <div class="metric-card"><div class="metric-label">Codigos en N+3</div><div class="metric-value n3" id="m-n3">—</div></div>
   </div>
 
   <div class="tabs">
-    <button class="tab on" data-tab="plan">Plan semanal</button>
+    <button class="tab on" data-tab="plan">Vista resumen</button>
     <button class="tab" data-tab="alertas">Alertas <span id="alert-badge" class="badge-count">0</span></button>
     <button class="tab" data-tab="config">Configuracion</button>
   </div>
 
   <div id="panel-plan" class="panel on">
-    <div class="week-pills" id="week-pills"></div>
-    <div id="plan-table-container">
+    <div id="pivot-container">
       <div class="empty-state">
-        <div class="empty-icon">📂</div>
-        <div class="empty-title">Sin datos aun</div>
-        <div class="empty-sub">Importa tu Excel o usa "Cargar ejemplo" para probar la app.</div>
+        <div class="empty-icon">&#128202;</div>
+        <div class="empty-title">Sin datos</div>
+        <div class="empty-sub">Importa el Plan y las Entregas para ver la tabla de ocupacion.</div>
       </div>
     </div>
   </div>
 
-  <div id="panel-alertas" class="panel">
-    <div id="alertas-container"></div>
-  </div>
-
-  <div id="panel-config" class="panel">
-    <div id="config-container"></div>
-  </div>
+  <div id="panel-alertas" class="panel"><div id="alertas-container"></div></div>
+  <div id="panel-config"  class="panel"><div id="config-container"></div></div>
 
 </div>
 
 <div id="modal-overlay" class="modal-overlay hidden">
   <div class="modal">
-    <h2>Mapear columnas del Excel</h2>
-    <p>Selecciona que columna corresponde a cada campo:</p>
+    <h2 id="modal-title">Mapear columnas</h2>
+    <p id="modal-desc">Selecciona que columna corresponde a cada campo:</p>
     <div id="col-map-fields"></div>
     <div class="modal-actions">
       <button class="btn-primary" onclick="confirmImport()">Confirmar e importar</button>
