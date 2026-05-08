@@ -31,14 +31,26 @@
     <div class="status-item" id="status-entrega">
       <span class="status-dot dot-off"></span><span>Entregas: sin cargar</span>
     </div>
-    <div class="status-item" id="status-semanas" style="margin-left:auto"></div>
+    <div class="status-item" id="status-semanas" style="margin-left:auto;font-size:11px;color:#aaa"></div>
   </div>
 
   <div class="metrics">
-    <div class="metric-card"><div class="metric-label">Codigos unicos</div><div class="metric-value" id="m-cods">—</div></div>
-    <div class="metric-card"><div class="metric-label">Ocupacion promedio</div><div class="metric-value" id="m-occ">—</div></div>
-    <div class="metric-card"><div class="metric-label">Alertas</div><div class="metric-value" id="m-alerts">—</div></div>
-    <div class="metric-card"><div class="metric-label">Codigos en N+3</div><div class="metric-value n3" id="m-n3">—</div></div>
+    <div class="metric-card">
+      <div class="metric-label">Utilizacion fraccionamiento</div>
+      <div class="metric-value" id="m-util">—</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Lts planificados</div>
+      <div class="metric-value" id="m-lts">—</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Alertas</div>
+      <div class="metric-value" id="m-alerts">—</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Codigos en N+3</div>
+      <div class="metric-value n3" id="m-n3">—</div>
+    </div>
   </div>
 
   <div class="tabs">
@@ -52,7 +64,7 @@
       <div class="empty-state">
         <div class="empty-icon">&#128202;</div>
         <div class="empty-title">Sin datos</div>
-        <div class="empty-sub">Importa el Plan y las Entregas para ver la tabla de ocupacion.</div>
+        <div class="empty-sub">Importa el Plan y las Entregas, o usa "Cargar ejemplo".</div>
       </div>
     </div>
   </div>
