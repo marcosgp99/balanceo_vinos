@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balanceo de Cargas WO</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+<div id="app">
+
+  <header class="header">
+    <div class="header-left">
+      <h1>Balanceo de Cargas WO</h1>
+      <span class="subtitle">Plan semanal &middot; N → N+3</span>
+    </div>
+    <div class="header-right">
+      <button class="btn-demo" onclick="cargarDemoData()">Cargar ejemplo</button>
+      <label class="btn-import" for="fileInput">Importar Excel</label>
+      <input type="file" id="fileInput" accept=".xlsx,.xls" hidden>
+    </div>
+  </header>
+
+  <div class="metrics">
+    <div class="metric-card"><div class="metric-label">WOs activas</div><div class="metric-value" id="m-wos">—</div></div>
+    <div class="metric-card"><div class="metric-label">Ocupacion promedio</div><div class="metric-value" id="m-occ">—</div></div>
+    <div class="metric-card"><div class="metric-label">Alertas</div><div class="metric-value" id="m-alerts">—</div></div>
+    <div class="metric-card"><div class="metric-label">Disponibles N+3</div><div class="metric-value n3" id="m-n3">—</div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab on" data-tab="plan">Plan semanal</button>
+    <button class="tab" data-tab="alertas">Alertas <span id="alert-badge" class="badge-count">0</span></button>
+    <button class="tab" data-tab="config">Configuracion</button>
+  </div>
+
+  <div id="panel-plan" class="panel on">
+    <div class="week-pills" id="week-pills"></div>
+    <div id="plan-table-container">
+      <div class="empty-state">
+        <div class="empty-icon">📂</div>
+        <div class="empty-title">Sin datos aun</div>
+        <div class="empty-sub">Importa tu Excel o usa "Cargar ejemplo" para probar la app.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-alertas" class="panel">
+    <div id="alertas-container"></div>
+  </div>
+
+  <div id="panel-config" class="panel">
+    <div id="config-container"></div>
+  </div>
+
+</div>
+
+<div id="modal-overlay" class="modal-overlay hidden">
+  <div class="modal">
+    <h2>Mapear columnas del Excel</h2>
+    <p>Selecciona que columna corresponde a cada campo:</p>
+    <div id="col-map-fields"></div>
+    <div class="modal-actions">
+      <button class="btn-primary" onclick="confirmImport()">Confirmar e importar</button>
+      <button class="btn-secondary" onclick="cerrarModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
