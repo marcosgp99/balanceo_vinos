@@ -16,11 +16,13 @@
       <span class="subtitle">Plan semanal &middot; N &rarr; N+3</span>
     </div>
     <div class="header-right">
-      <button class="btn-demo" onclick="cargarDemoData()">Cargar ejemplo</button>
-      <label class="btn-import btn-plan" for="filePlan">&#128203; Importar Plan</label>
-      <input type="file" id="filePlan" accept=".xlsx,.xls" hidden>
-      <label class="btn-import btn-entrega" for="fileEntrega">&#128230; Importar Entregas</label>
+      <button class="btn-demo" onclick="cargarDemoData()">Ejemplo</button>
+      <label class="btn-import btn-plan"    for="filePlan">&#128203; Plan</label>
+      <input type="file" id="filePlan"    accept=".xlsx,.xls" hidden>
+      <label class="btn-import btn-entrega" for="fileEntrega">&#128230; Entregas</label>
       <input type="file" id="fileEntrega" accept=".xlsx,.xls" hidden>
+      <label class="btn-import btn-insumo"  for="fileInsumo">&#128994; Insumos</label>
+      <input type="file" id="fileInsumo"  accept=".xlsx,.xls" hidden>
     </div>
   </header>
 
@@ -31,12 +33,15 @@
     <div class="status-item" id="status-entrega">
       <span class="status-dot dot-off"></span><span>Entregas: sin cargar</span>
     </div>
+    <div class="status-item" id="status-insumo">
+      <span class="status-dot dot-off"></span><span>Insumos: sin cargar</span>
+    </div>
     <div class="status-item" id="status-semanas" style="margin-left:auto;font-size:11px;color:#aaa"></div>
   </div>
 
   <div class="metrics">
     <div class="metric-card">
-      <div class="metric-label">Utilizacion fraccionamiento</div>
+      <div class="metric-label">Utilizacion total</div>
       <div class="metric-value" id="m-util">—</div>
     </div>
     <div class="metric-card">
@@ -48,8 +53,8 @@
       <div class="metric-value" id="m-alerts">—</div>
     </div>
     <div class="metric-card">
-      <div class="metric-label">Codigos en N+3</div>
-      <div class="metric-value n3" id="m-n3">—</div>
+      <div class="metric-label">Insumos con problema</div>
+      <div class="metric-value" id="m-insumo">—</div>
     </div>
   </div>
 
@@ -60,11 +65,15 @@
   </div>
 
   <div id="panel-plan" class="panel on">
+    <div class="filter-bar">
+      <span class="filter-label">Agrupar por semana:</span>
+      <div id="semana-filter"></div>
+    </div>
     <div id="pivot-container">
       <div class="empty-state">
         <div class="empty-icon">&#128202;</div>
         <div class="empty-title">Sin datos</div>
-        <div class="empty-sub">Importa el Plan y las Entregas, o usa "Cargar ejemplo".</div>
+        <div class="empty-sub">Importa el Plan y las Entregas, o usa "Ejemplo".</div>
       </div>
     </div>
   </div>
