@@ -16,13 +16,14 @@
       <span class="subtitle">Plan semanal &middot; N &rarr; N+3</span>
     </div>
     <div class="header-right">
-      <button class="btn-demo" onclick="cargarDemoData()">Ejemplo</button>
-      <label class="btn-import btn-plan"    for="filePlan">&#128203; Plan</label>
+      <button class="btn-demo"   onclick="cargarDemoData()">Ejemplo</button>
+      <label  class="btn-import btn-plan"    for="filePlan">&#128203; Plan</label>
       <input type="file" id="filePlan"    accept=".xlsx,.xls" hidden>
-      <label class="btn-import btn-entrega" for="fileEntrega">&#128230; Entregas</label>
+      <label  class="btn-import btn-entrega" for="fileEntrega">&#128230; Entregas</label>
       <input type="file" id="fileEntrega" accept=".xlsx,.xls" hidden>
-      <label class="btn-import btn-insumo"  for="fileInsumo">&#128994; Insumos</label>
+      <label  class="btn-import btn-insumo"  for="fileInsumo">&#128994; Insumos</label>
       <input type="file" id="fileInsumo"  accept=".xlsx,.xls" hidden>
+      <button class="btn-export" onclick="showExportModal()">&#11014; Exportar</button>
     </div>
   </header>
 
@@ -86,10 +87,10 @@
 <div id="modal-overlay" class="modal-overlay hidden">
   <div class="modal">
     <h2 id="modal-title">Mapear columnas</h2>
-    <p id="modal-desc">Selecciona que columna corresponde a cada campo:</p>
+    <p  id="modal-desc">Selecciona que columna corresponde a cada campo:</p>
     <div id="col-map-fields"></div>
     <div class="modal-actions">
-      <button class="btn-primary" onclick="confirmImport()">Confirmar e importar</button>
+      <button class="btn-primary" id="modal-confirm-btn" onclick="confirmImport()">Confirmar e importar</button>
       <button class="btn-secondary" onclick="cerrarModal()">Cancelar</button>
     </div>
   </div>
